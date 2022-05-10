@@ -1,0 +1,28 @@
+/* 클래스 셀렉터 */
+.font-color {
+    color : red;
+}
+
+.text-align {
+    text-align: right;
+}
+
+.overline {
+    text-decoration: overline;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.lowercase {
+    text-transform: lowercase;
+}
+
+.text-indent {
+    text-indent: 4em;
+}

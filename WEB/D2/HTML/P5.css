@@ -1,0 +1,21 @@
+/* 클래스 셀렉터 */
+.font-color {
+    color : red;
+}
+
+.font-family {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.font-style {
+    font-style: oblique;
+}
+
+.font-size {
+    font-size: x-large;
+}
+
+.font-height {
+    line-height: 2cm;
+}
+

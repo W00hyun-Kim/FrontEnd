@@ -24,6 +24,17 @@ p {
     font-size: x-large; 
 }
 
+.border {
+    border-style: dashed;
+    border-width: 1px;
+}
+
+/* p태그 이면서 border인 애들만 해당 사항 반영 */
+p.border {
+    border-style: solid;
+    border-width: 5px;
+}
+
 /* id 셀렉터 */
 #div1 {
     background-color: cornflowerblue;
