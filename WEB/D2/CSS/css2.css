@@ -1,3 +1,4 @@
+/* 태그를 가르키는 셀렉터 */
 div {
     background-color: blanchedalmond;
 }
@@ -8,4 +9,22 @@ body {
 
 p {
     color: blue;
+}
+
+/* 클래스를 가르키는 셀렉터 */
+.red-text {
+    color: red
+}
+
+.yellow-text {
+    color:yellow
+}
+
+.big-size {
+    font-size: x-large; 
+}
+
+/* id 셀렉터 */
+#div1 {
+    background-color: cornflowerblue;
 }
