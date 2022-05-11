@@ -33,7 +33,6 @@ body {
 }
 
 
-
 .nav-item a {
     display: inline-block;
     text-align: right;
@@ -49,7 +48,7 @@ body {
 }
 
 header {
-    margin-top: 80px;
+    margin-top: 200px;
     padding: 30px;
     text-align: center;
     color:white;   
@@ -64,11 +63,18 @@ header {
     font-size: 16px;
     border-style: solid;
     border-color: white;
-    border-radius: 1.5px;
+    border-width: 2px;
     box-shadow: 0 4px 16px rgba(0,79,255,0.3);
     transition:0.3s;
     position: absolute;
     left:50%;
-    top:50%;
+    top:55%;
     transform: translate(-50%,-50%);
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    min-height: 100vh;
 }
