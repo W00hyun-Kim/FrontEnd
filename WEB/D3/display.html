@@ -10,19 +10,14 @@
     <style>
         div {
             display: inline-block; 
-            height: 200;
             border: 1px red solid;
-            /* border를 기준으로 안쪽은 padding 바깥은 margin */
-            padding-left: 10px;
-            padding-top: 10px;
-            margin: 10px;
         }
 
         span {
             display: block;
             /* height: 200px;       */
         }
-        
+
         /* position relative */
         div.div1 {
             background-color: slategrey;
@@ -30,13 +25,23 @@
             padding: 0;
             display: inline;
             position: relative;
-            left: 30px;
+            left: 0px;
             top: 10px;
         }
+
+        /* position fixed */
+        /* 속성을 주기 위해서 block인 div를 inline-block으로 바꿔야 한다. */
+        div.div2 {
+            position: fixed;
+            right: 0 ;
+        }
+
+
 
     </style>
 
     <div class="div1">div1</div>
+    <div class="div2">div2</div>
 
 
     <div>div</div>
