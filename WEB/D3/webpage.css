@@ -14,19 +14,61 @@ body {
     padding: 0;
     background-color: rgb(65, 68, 68);
     list-style-type: none;
+
+
+}
+
+.nav-item1 {
+    padding: 15px;
+    cursor: pointer;
 }
 
 .nav-item {
     padding: 15px;
     cursor: pointer;
+    margin-left: auto;
+    float: right;
+    display: inline-block;
+
 }
 
+
+
 .nav-item a {
-    text-align: center;
+    display: inline-block;
+    text-align: right;
     text-decoration: none;
-    color:white;
+    color:white;   
+}
+
+.nav-item1 a {
+    display: inline-block;
+    text-align: right;
+    text-decoration: none;
+    color:white;   
 }
 
 header {
     margin-top: 80px;
+    padding: 30px;
+    text-align: center;
+    color:white;   
+}
+
+.view {
+    cursor: pointer;
+    text-align: center;
+    width:140px;
+    height: 30px;
+    color:#fff;
+    font-size: 16px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 1.5px;
+    box-shadow: 0 4px 16px rgba(0,79,255,0.3);
+    transition:0.3s;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
 }
