@@ -7,16 +7,20 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- display 속성 차이 파악 -->
     <style>
         div {
             display: inline-block; 
             height: 200;
+            border: 1px red solid;
+            /* border를 기준으로 안쪽은 padding 바깥은 margin */
+            padding-left: 10px;
+            padding-top: 10px;
+            margin: 10px;
         }
 
         span {
             display: block;
-            height: 200px;      
+            /* height: 200px;       */
         }
 
     </style>
