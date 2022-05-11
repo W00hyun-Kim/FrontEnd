@@ -1,35 +1,36 @@
 body {
     margin: 0;
-    background-image: url("Universe.PNG") ;
+    background-image: url("Universe.PNG");
     background-size: cover;
 }
 
 .nav-container {
     position: fixed;
-    top:0;
+    top: 0;
     display: flex;
-    flex-direction: row;
     width: 100%;
     margin: 0;
     padding: 0;
     background-color: rgb(65, 68, 68);
     list-style-type: none;
-
-
+    justify-content: flex-end;
 }
 
 .nav-item1 {
     padding: 15px;
     cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
 }
 
 .nav-item {
     padding: 15px;
     cursor: pointer;
-    margin-left: auto;
     float: right;
     display: inline-block;
-
 }
 
 
@@ -37,44 +38,48 @@ body {
     display: inline-block;
     text-align: right;
     text-decoration: none;
-    color:white;   
+    color: white;
 }
 
 .nav-item1 a {
     display: inline-block;
     text-align: right;
     text-decoration: none;
-    color:white;   
+    color: white;
 }
 
 header {
     margin-top: 200px;
     padding: 30px;
     text-align: center;
-    color:white;   
+    color: white;
 }
 
 .view {
     cursor: pointer;
     text-align: center;
-    width:140px;
+    width: 140px;
     height: 30px;
-    color:#fff;
+    color: #fff;
     font-size: 16px;
     border-style: solid;
     border-color: white;
     border-width: 2px;
-    box-shadow: 0 4px 16px rgba(0,79,255,0.3);
-    transition:0.3s;
+    box-shadow: 0 4px 16px rgba(0, 79, 255, 0.3);
+    transition: 0.3s;
     position: absolute;
-    left:50%;
-    top:55%;
-    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
 }
 
 .main {
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
     min-height: 100vh;
 }
