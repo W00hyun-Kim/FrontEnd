@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 3</title>
+    <link rel="stylesheet" href="P3.css">
+
+</head>
+<body>
+
+    <div class="box_container">
+        <button id="id1" class="box1" onclick="clickOn1()">html</button>
+        <button id="id2" class="box1" onclick="clickOn2()">css</button>
+        <button id="id3" class="box1" onclick="clickOn3()">javascript</button>
+    </div>
+
+    <script>
+
+        function clickOn1() {
+            const clickOn1 = document.getElementById("id1");
+            clickOn1.classList.toggle('active');
+        }
+
+        function clickOn2() {
+            const clickOn2 = document.getElementById("id2");
+            clickOn2.classList.toggle('active');
+        }
+
+        function clickOn3() {
+            const clickOn3 = document.getElementById("id3");
+            clickOn3.classList.toggle('active');
+        }
+
+    </script>
+</body>
+</html>
