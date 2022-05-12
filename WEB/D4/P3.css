@@ -1,6 +1,6 @@
 .box1 {
     cursor: pointer;
-    text-align: left;
+    text-align: center;
     width: 100px;
     height: 30px;
     color: white;
@@ -15,7 +15,7 @@
 }
 
 /* 마우스 오버(마우스 올렸을때) */
-.box1:hover{
+.box1:hover {
     background-color: white;
     border-style: solid;
     border-color: black;
@@ -25,7 +25,7 @@
 }
 
 /* 마우스 기록(마우스 클릭했을때) */
-.box1:visited{
+.box1:visited {
     background-color: red;
     border-style: solid;
     border-color: black;
