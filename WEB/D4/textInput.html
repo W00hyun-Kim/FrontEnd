@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 2</title>
+</head>
+<body onload="init()">
+    
+    <button id="id1" class="box1" onclick="clickOn1()">빨강</button>
+    <button id="id2" class="box1" onclick="clickOn2()">파랑</button>
+    <button id="id3" class="box1" onclick="clickOn3()">초록</button>
+
+    <style>
+        .box1 {
+            cursor: pointer;
+            text-align: left;
+            width: 100px;
+            height: 30px;
+            color: white;
+            background-color: gray;
+            font-size: 16px;
+            border-style: solid;
+            border-color: black;
+            border-width: 2px;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        
+    </style>
+
+    <script>
+        function init() {
+            const inputText = prompt('텍스트 입력해주세요.');
+    
+            if(inputText == null) {
+                alert('뭐라도 입력해주세요');
+            } else {
+                document.write("<div style='font-size:80px' 'text-align:center'>");
+                document.write("<div style='text-align:center'>");
+                document.write(inputText);
+                document.write("</div>");
+            }
+        }
+    </script>
+
+</body>
+</html>
