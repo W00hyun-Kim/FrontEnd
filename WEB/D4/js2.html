@@ -7,6 +7,17 @@
     <title>document</title>
 </head>
 <body>
+    <style>
+        .small-text {
+            font-size: 10px;
+        }
+
+        .big-text {
+            font-size: 100px;
+        }
+    </style>   
+
+
     <script>
         function addTag() {
             document.write('<h1>hello World</h1>')
@@ -27,6 +38,9 @@
             let content = firstItem.textContent;
             //내용 바꾸기
             firstItem.textContent = 'changed';
+            firstItem.style.backgroundColor = '#ff0000'
+            
+
         }
 
     </script>
@@ -46,6 +60,41 @@
         <li class="item">item4</li>
 
     </ul>
+
+    <div id="target" class=".small-text" onclick="changeClassName()"> Hello </div>
+
+    <script>
+
+        let isSmallText = true;
+
+        function changeClassName() {
+            let target = document.getElementById('target')
+
+            if(isSmallText) {
+                target.className = 'big-text';
+                isSmallText = false;
+            } else {
+                target.className = 'small-text'
+                isSmallText = true;
+            }
+
+            target.className = 'big-Text'
+        }
+    </script>
+
+    <!-- Inner Html -->
+    <div id="pic" onclick="changeHTML()">
+    <img  src="Spongebob.png" >
+    </div>
+    <!-- <div id="pic" onclick="changeHTML()">hello</div> -->
+
+    <script>
+        function changeHTML() {
+            let pic = document.getElementById('pic')
+            pic.innerHTML = "<h1>뿅!</h1>"
+            // pic.textContent = "<h1>뿅!</h1>"
+        }
+    </script>
 
 </body>
 </html>
