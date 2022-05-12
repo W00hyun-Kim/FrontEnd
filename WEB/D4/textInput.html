@@ -1,51 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practice 2</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>textInput</title>
 </head>
-<body onload="init()">
-    
-    <button id="id1" class="box1" onclick="clickOn1()">빨강</button>
-    <button id="id2" class="box1" onclick="clickOn2()">파랑</button>
-    <button id="id3" class="box1" onclick="clickOn3()">초록</button>
 
-    <style>
-        .box1 {
-            cursor: pointer;
-            text-align: left;
-            width: 100px;
-            height: 30px;
-            color: white;
-            background-color: gray;
-            font-size: 16px;
-            border-style: solid;
-            border-color: black;
-            border-width: 2px;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
-        }
-
-        
-    </style>
-
+<body>
+    <p id="text"></p>
     <script>
-        function init() {
-            const inputText = prompt('텍스트 입력해주세요.');
-    
-            if(inputText == null) {
-                alert('뭐라도 입력해주세요');
-            } else {
-                document.write("<div style='font-size:80px' 'text-align:center'>");
-                document.write("<div style='text-align:center'>");
-                document.write(inputText);
-                document.write("</div>");
-            }
+
+        let input = prompt("내용입력:");
+        if (input == "" || input == null) {
+            input = prompt("텍스트 값을 입력해주세요");
         }
+        document.getElementById("text").innerHTML = input;
+
+
     </script>
 
-</body>
+    <body style="text-align: center; font-size:x-large;">
+        <button onclick="red()">빨강</button>
+        <button onclick="blue()">파랑</button>
+        <button onclick="green()">초록</button>
+
+        <script>
+            function red() {
+                alert("빨강색으로 변경됩니다");
+                document.getElementById("text").innerHTML = input;
+                document.body.style.color = "red";
+            }
+
+            function blue() {
+                alert("파란색으로 변경됩니다");
+                document.getElementById("text").innerHTML = input;
+                document.body.style.color = "blue";
+            }
+
+            function green() {
+                alert("초록색으로 변경됩니다");
+                document.getElementById("text").innerHTML = input;
+                document.body.style.color = "green";
+            }
+
+        </script>
+    </body>
+
 </html>
