@@ -8,9 +8,6 @@
 </head>
 <body onload="init()">
     
-    <button id="id1" class="box1" onclick="clickOn1()">빨강</button>
-    <button id="id2" class="box1" onclick="clickOn2()">파랑</button>
-    <button id="id3" class="box1" onclick="clickOn3()">초록</button>
 
     <style>
         .box1 {
@@ -43,7 +40,8 @@
                 document.write("<div style='text-align:center'>");
                 document.write(inputText);
                 document.write("</div>");
-            }
+                window.onload = init;
+            }    
         }
     </script>
 
