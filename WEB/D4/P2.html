@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practice 2</title>
 </head>
+
 <body>
     <script>
         //1. 숫자를 입력받기
@@ -14,20 +16,21 @@
         //2. 만약 숫자가 입력이 안되었다면('',null) if문
         //입력해 주세요 띄우고, 또 입력을 받고 prompt
 
-        if(result == null) {
+        if (result == null) {
             result = prompt('뭐라도 입력해주세요');
-        } else if(isNaN(result)==true) {   //숫자가 아니면 true
+        } else if (isNaN(result) == true) {   //숫자가 아니면 true
             result = prompt('숫자 입력하라니까요')
-        } 
+        }
         //3. 숫자가 맞고 1이상 혹은 100이하가 아니면 경고창
-        if(isNaN(result)==false && !(result >= 1 && result <= 100)) {
+        if (isNaN(result) == false && !(result >= 1 && result <= 100)) {
             alert('숫자는 1이상 100이하를 넣어주세요.')
         } else {
-            for(var i=1; i<=result; i++) {
+            for (var i = 1; i <= result; i++) {
                 console.log(i)
             }
             alert('완료되었습니다.')
         }
     </script>
 </body>
+
 </html>

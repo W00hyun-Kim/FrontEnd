@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practice 2</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>textInput</title>
 </head>
+<<<<<<< HEAD
 <body onload="init()">
     
 
@@ -28,8 +30,13 @@
 
         
     </style>
+=======
+>>>>>>> be2279dcbe1a3b8d1aa39b6885068a5a7841aea9
 
+<body>
+    <div id="text"></div>
     <script>
+<<<<<<< HEAD
         function init() {
             const inputText = prompt('텍스트 입력해주세요.');
     
@@ -44,6 +51,43 @@
             }    
         }
     </script>
+=======
+>>>>>>> be2279dcbe1a3b8d1aa39b6885068a5a7841aea9
 
-</body>
+        let input = prompt("내용입력:");
+        if (input == "" || input == null) {
+            input = prompt("텍스트 값을 입력해주세요");
+        }
+        document.getElementById("text").innerHTML = input;
+
+
+    </script>
+rladn
+    <body style="text-align: center; font-size:x-large;">
+        <button onclick="red()">빨강</button>
+        <button onclick="blue()">파랑</button>
+        <button onclick="green()">초록</button>
+
+        <script>
+            function red() {
+                alert("빨강색으로 변경됩니다");
+                document.getElementById("text").innerHTML = input;
+                document.body.style.color = "red";
+            }
+
+            function blue() {
+                alert("파란색으로 변경됩니다");
+                document.getElementById("text").innerHTML = input;
+                document.body.style.color = "blue";
+            }
+
+            function green() {
+                alert("초록색으로 변경됩니다");
+                document.getElementById("text").innerHTML = input;
+                document.body.style.color = "green";
+            }
+
+        </script>
+    </body>
+
 </html>

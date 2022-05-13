@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practice 1</title>
 </head>
+
 <body>
     <script>
         //1. 이름 입력(prompt)
         var result = prompt('이름을 입력해주세요');
         //2. 만약 이름이 입력이 안되었다면('',null) if문
         //입력해 주세요 띄우고, 또 입력을 받고 prompt
-        if(result == null) {
+        if (result == null) {
             result = prompt('이름을 입력해주세요');
-        } else if(result == '') {
+        } else if (result == '') {
             result = prompt('이름 입력하라니까요.')
         }
         //3. 입력이 되면 '우현님 안녕하세요' 띄우기 alert
-        if(result != null) {
+        if (result != null) {
             alert(`${result}님 안녕하세요`)
         }
     </script>
 </body>
+
 </html>
