@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>textColorChange</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+<body style="text-align: center; font-size:xx-large;">
+
+    <style>
+        .fontred {
+            color: red;
+        }
+
+        .fontblue {
+            color: blue;
+        }
+
+        .fontgreen {
+            color: green;
+        }
+    </style>
+
+    <script>
+
+        $(function () {
+            const input = prompt("내용입력:");
+            if (input == "" || input == null) {
+                input = prompt("텍스트 값을 입력해주세요");
+            }
+            $('#text').text(input);
+
+            $("#red").click(function () {
+                alert("빨강색으로 변경됩니다");
+                $("#text").attr("class", "fontred");
+            })
+            $("#green").click(function () {
+                alert("초록색으로 변경됩니다");
+                $("#text").attr("class", "fontgreen");
+            })
+            $("#blue").click(function () {
+                alert("파랑색으로 변경됩니다");
+                $("#text").attr("class", "fontblue");
+            })
+        })
+
+    </script>
+
+    <div id="text"></div>
+
+    <button onclick="red()" id="red">빨강</button>
+    <button onclick="blue()" id="blue">파랑</button>
+    <button onclick="green()" id="green">초록</button>
+
+
+</body>
+
+</html>
