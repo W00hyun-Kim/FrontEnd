@@ -50,15 +50,24 @@ space bar : 32
                 }
             });
 
+            let timer = 0;
+            let jellyfishes = [];
 
             setInterval(() => {
                 // 해파리 등장
                 $("#jellyfish").show();
+
                 setTimeout(() => {
                     // 끝까지 이동
-                    $("#jellyfish").animate({ left: `-=700px` }, 2000); //속도조절 느릿하게
+                    $("#jellyfish").show();
+                    $("#jellyfish").animate({ left: `-=900px` }, 2000); //속도조절 느릿하게
+                    // 해파리 다시 등장
+                    setTimeout(() => {
+                        $("#jellyfish").animate({ left: '700px' });
+                    }, 700);
                 }, 500);
-            }, 3000);
+            }, 300);
+
         })
 
 
