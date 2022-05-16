@@ -18,6 +18,8 @@
             left: 50px;
             top: 50px;
             border: 1px black solid;
+            overflow-x: hidden;
+            overflow-y: hidden;
         }
 
         #spongebob {
@@ -37,8 +39,24 @@
 
         #background {
             position: absolute;
-            width: 600px;
-            height: 300px;
+            width: 200%;
+            height: 100%;
+            background: url("../assets/bikini_city.png");
+            background-size: contain;
+            animation-name: bg-slide;
+            animation-duration: 22s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        @keyframes bg-slide {
+            from {
+                left: 0px;
+            }
+
+            to {
+                left: -100%;
+            }
         }
 
         #gameover {
@@ -80,12 +98,30 @@
             left: 110px;
             font-weight: bolder;
         }
+
+        #happyvillan {
+            position: absolute;
+            width: 120px;
+            height: 100px;
+            bottom: 20px;
+            left: 100px;
+        }
+
+        #angry {
+            position: absolute;
+            width: 120px;
+            height: 100px;
+            bottom: 20px;
+            left: 20px;
+        }
     </style>
 
     <div id="container">
-        <img id="background" src="../assets/bikini_city.png" alt="background" style="opacity: 0.68;">
+        <img id="background" src="../assets/bikini_city.png" alt="background" style="opacity: 0.8;">
         <img id="spongebob" src="../assets/Star.gif" alt="spongebob" style=" transform: scaleX(-1);">
         <img id="killer" src="../assets/sunglass_spongebob.gif" alt="killer" style=" transform: scaleX(-1);">
+        <img id="happyvillan" src="../assets/happySpongebob.gif" alt="happyvillan">
+        <img id="angry" src="../assets/angry_star.gif" alt="angry" style=" transform: scaleX(-1);">
         <div id="gameover">GAME OVER<br />
             <button id="restart_button" class="game_start_button">Restart</button>
         </div>
@@ -121,12 +157,10 @@
             }
 
             isJumping = true;
-            burgerScore++;
             character.animate({ bottom: "+=100px" }, 500)
                 .animate({ bottom: "-=100px" }, 500, function () {
                     isJumping = false;
                 });
-            document.getElementById("burgerScore").innerHTML = " : " + burgerScore
         }
 
         function moveKiller() {
@@ -134,7 +168,9 @@
                 killer.css({ right: "-100px" });
 
                 if (isGameOver == false) {
-                    setTimeout(moveKiller);
+                    setTimeout(moveKiller, 1000);
+                    burgerScore += 100;
+                    document.getElementById("burgerScore").innerHTML = " : " + burgerScore
                 }
             });
         }
@@ -166,15 +202,27 @@
             $("#conatainer").hide();
             $("#burger").hide();
             $("#burgerScore").hide();
+            $("#happyvillan").show();
+            $("#spongebob").hide();
+            $("#angry").show();
+            $("#killer").hide();
+
             burgerScore = 0;
 
         }
 
         function gameStart() {
+            burgerScore = 0;
             $("#burger").hide();
             $("#gameover").hide();
             $("#start").hide();
             $("#conatainer").show();
+            $("#burgerScore").show();
+            $("#happyvillan").hide();
+            $("#angry").hide();
+            $("#spongebob").show();
+            $("#killer").show();
+
             isGameOver = false;
 
             killer.css({ right: "-100px" })
@@ -196,8 +244,10 @@
         });
 
         $(".game_start_button").click(function () {
+            burgerScore = 0;
             gameStart();
-            $("#burger").show();        //게임이 시작되면 버거스코어 등장
+            $("#burger").show();        //게임이 시작되면 버거 이미지 등장
+            $("#burgerScore").show();        //게임이 시작되면 버거 이미지 등장
 
         });
 
@@ -211,10 +261,7 @@
                 if (isGameOver == true) {
                     gameOver();
                 } else {
-
                     // 1초에 30번 그리기
-                    moveKiller();
-
                     //캐릭터 부딪히면 사라짐
                     spongbobDead();
                 }
@@ -222,6 +269,7 @@
         }
 
         $(function () {
+            burgerScore = 0
             gameStart();
             $("#start").show();
             $(".game_start_button").click(function () {
