@@ -48,17 +48,28 @@
     <script>
         $(function () {
             $("input:checkbox[name=check_all]").change(function () {    //선택된 element에 change이벤트가 발생하면 아래 함수 실행
-                if (this.checked) $("input:checkbox[name=check]").prop("checked", true);  //체크되었으면 전부 체크
-                else $("input:checkbox[name=check]").prop("checked", false); //체크안되었으면 전부 체크 해제
+                $("input:checkbox[name=check]").prop("checked", this.checked);  //체크되었으면 전부 체크
             });
 
             //로그 누르면 콘솔창에 찍히기
+            // $("#log").click(function () {
+            //     $("input:checkbox[name=check]").each(function () {
+            //         if (this.checked) {
+            //             let index = $("input:checkbox[name=check]").index(this);
+            //             console.log(`${$(".title")[index + 1].textContent}\n`);
+            //         }
+            //     });
+            // });
             $("#log").click(function () {
-                $("input:checkbox[name=check]").each(function () {
-                    if (this.checked) {
-                        let index = $("input:checkbox[name=check]").index(this);
-                        console.log(`${$(".title")[index + 1].textContent}\n`);
-                    }
+                // 체크가 없다면
+                if ($(":checkbox[name=check]").is(":checked") == false) {
+                    alert('선택 없음!!');
+                    return;
+                }
+
+                // 체크된 체크박스
+                $(":checkbox[name=check]:checked").each(function () {
+                    console.log($(this).val());
                 });
             });
         });
@@ -76,42 +87,42 @@
             </tr>
             <tr>
                 <td class="checkbox_table">
-                    <label><input type="checkbox" name="check" /></label>
+                    <label><input type="checkbox" name="check" value="11111" /></label>
                 </td>
                 <td class="title">11111</td>
                 <td class="time">11:11:00</td>
             </tr>
             <tr>
                 <td class="checkbox_table">
-                    <label><input type="checkbox" name="check" /></label>
+                    <label><input type="checkbox" name="check" value="2222222222" /></label>
                 </td>
                 <td class="title">2222222222</td>
                 <td class="time">11:11:00</td>
             </tr>
             <tr>
                 <td class="checkbox_table">
-                    <label><input type="checkbox" name="check" /></label>
+                    <label><input type="checkbox" name="check" value="333333333333" /></label>
                 </td>
                 <td class="title">333333333333</td>
                 <td class="time">11:11:00</td>
             </tr>
             <tr>
                 <td class="checkbox_table">
-                    <label><input type="checkbox" name="check" /></label>
+                    <label><input type="checkbox" name="check" value="444444444" /></label>
                 </td>
                 <td class="title">444444444</td>
                 <td class="time">11:11:00</td>
             </tr>
             <tr>
                 <td class="checkbox_table">
-                    <label><input type="checkbox" name="check" /></label>
+                    <label><input type="checkbox" name="check" value="5555555555555" /></label>
                 </td>
                 <td class="title">5555555555555</td>
                 <td class="time">11:11:00</td>
             </tr>
             <tr>
                 <td class="checkbox_table">
-                    <label><input type="checkbox" name="check" /></label>
+                    <label><input type="checkbox" name="check" value="666666666666" /></label>
                 </td>
                 <td class="title">666666666666</td>
                 <td class="time">11:11:00</td>
