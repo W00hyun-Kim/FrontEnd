@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스펀지밥 게임</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <style>
+        #container {
+            position: absolute;
+            width: 600px;
+            height: 300px;
+            left: 50px;
+            top: 50px;
+            border: 1px black solid;
+        }
+
+        #spongebob {
+            position: absolute;
+            width: 120px;
+            height: 100px;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        #killer {
+            position: absolute;
+            width: 100px;
+            bottom: 20px;
+            right: -100px;
+        }
+
+        #background {
+            position: absolute;
+            width: 600px;
+            height: 300px;
+        }
+
+        #gameover {
+            color: red;
+            font-weight: bolder;
+            font-size: 80px;
+            position: absolute;
+            left: 70px;
+        }
+
+        #restart_button {
+            position: absolute;
+            font-size: 30px;
+            left: 180px;
+            background-color: yellow;
+        }
+
+        #start_button {
+            position: absolute;
+            font-size: 30px;
+            left: 180px;
+            top: 10px;
+            background-color: lightgoldenrodyellow;
+        }
+
+        #burger {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            bottom: 200px;
+            left: 60px;
+        }
+
+        #burgerScore {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            bottom: 190px;
+            left: 110px;
+            font-weight: bolder;
+        }
+    </style>
+
+    <div id="container">
+        <img id="background" src="../assets/bikini_city.png" alt="background" style="opacity: 0.68;">
+        <img id="spongebob" src="../assets/Star.gif" alt="spongebob" style=" transform: scaleX(-1);">
+        <img id="killer" src="../assets/sunglass_spongebob.gif" alt="killer" style=" transform: scaleX(-1);">
+        <div id="gameover">GAME OVER<br />
+            <button id="restart_button" class="game_start_button">Restart</button>
+        </div>
+
+        <div id="start">
+            <button id="start_button" class="game_start_button">GAME START</button>
+        </div>
+
+        <div id="scoreburger">
+            <img id="burger" src="../assets/burger.gif" alt="score">
+        </div>
+
+        <div id="burgerScore"></div>
+
+    </div>
+
+    <script>
+        const WIDTH = 600;
+        const HEIGHT = 300;
+
+        let character = $("#spongebob");
+        let killer = $("#killer");
+
+
+        //상태
+        let isJumping = false;
+        let isGameOver = false;
+        let burgerScore = 0;
+
+        function jump() {
+            if (isJumping) {
+                return;
+            }
+
+            isJumping = true;
+            burgerScore++;
+            character.animate({ bottom: "+=100px" }, 500)
+                .animate({ bottom: "-=100px" }, 500, function () {
+                    isJumping = false;
+                });
+            document.getElementById("burgerScore").innerHTML = " : " + burgerScore
+        }
+
+        function moveKiller() {
+            killer.animate({ right: "120%" }, 3000, function () {
+                killer.css({ right: "-100px" });
+
+                if (isGameOver == false) {
+                    setTimeout(moveKiller);
+                }
+            });
+        }
+
+        function spongbobDead() {
+
+            let killerLeft = parseInt(killer.css("left").replace("px", ""));
+            let spongeLeft = parseInt(character.css("left").replace("px", ""));
+            let spongeRight = spongeLeft + 100;
+
+            // console.log(`killerLeft : ${killerLeft}, spongeRight : ${spongeRight}`)
+            // console.log(spongeRight > killerLeft);
+
+            if (isJumping == false
+                && spongeRight > killerLeft
+                && killerLeft > spongeLeft
+            ) {
+                isGameOver = true;
+            }
+        }
+
+        function gameOver() {
+            isGameOver = true;
+            killer.stop();
+
+            //게임 오버 관련 화면 보여주기
+            $("#gameover").show();
+            $("#start").hide();
+            $("#conatainer").hide();
+            $("#burger").hide();
+            $("#burgerScore").hide();
+            burgerScore = 0;
+
+        }
+
+        function gameStart() {
+            $("#burger").hide();
+            $("#gameover").hide();
+            $("#start").hide();
+            $("#conatainer").show();
+            isGameOver = false;
+
+            killer.css({ right: "-100px" })
+        }
+
+        $("body").keydown(function (event) {
+            // 캐릭터 현재 좌표 정보
+            let left = parseInt(character.css("left").replace("px", ""));
+            let top = parseInt(character.css("top").replace("px", ""));
+            let right = left + 100;
+            let bottom = top + 100;
+            let move = 25;  // 이동할 픽셀
+
+            switch (event.key) {
+                case " ":
+                    jump();
+                    break;
+            }
+        });
+
+        $(".game_start_button").click(function () {
+            gameStart();
+            $("#burger").show();        //게임이 시작되면 버거스코어 등장
+
+        });
+
+        function game() {
+            setTimeout(moveKiller, 1000);
+
+
+            // 게임 화면 그리기 30frame
+            setInterval(function () {
+
+                if (isGameOver == true) {
+                    gameOver();
+                } else {
+
+                    // 1초에 30번 그리기
+                    moveKiller();
+
+                    //캐릭터 부딪히면 사라짐
+                    spongbobDead();
+                }
+            }, 1000 / 30);
+        }
+
+        $(function () {
+            gameStart();
+            $("#start").show();
+            $(".game_start_button").click(function () {
+                game();
+            });
+        })
+
+
+
+    </script>
+</body>
+
+</html>
