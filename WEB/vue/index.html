@@ -59,7 +59,9 @@
             },
             //생성자
             created: function () {
-                console.log('created!');
+                //this 생략안됨. this를 써야 접근이 가능
+                this.greeting();
+                this.bye();
             },
             //methods
             methods: {
