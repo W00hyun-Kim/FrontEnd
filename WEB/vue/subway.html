@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--lodash library 사용하기 위해 cdn import-->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <title>subway</title>
+</head>
+
+<body>
+    <div id="app">
+        <!--양방향 바인딩-->
+        역 이름 :
+        <input v-model="query" placeholder="역 이름을 입력하세요.">
+        <ul>
+            <li v-for="item in realtimeArrivalList">
+                {{ item.trainLineNm }}, {{ item.arvlMsg2 }}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                query: '',
+                realtimeArrivalList: [], //전체 데이터
+            },
+            created: function () {
+                //통신
+                this.getrealtimeArrivalList();
+
+                //디바운스 적용된 검색 함수 정의
+                //1초 안에 들어온 값은 무시한다. debounce에 넣기 위해서 search method 분리
+                //debouncedSearch 라는 함수를 정의해서 넣음.
+                this.debouncedSearch = _.debounce(this.getrealtimeArrivalList, 1000);
+            },
+            methods: {
+                getrealtimeArrivalList: function () {
+                    //this의 scope를 특정하기 위해서 변수에 넣음
+                    let vm = this;
+                    fetch(`http://swopenapi.seoul.go.kr/api/subway/sample/json/realtimeStationArrival/0/5/${this.query}`)
+                        .then(response => response.json())
+                        .then(function (json) {
+                            //제이슨 데이터를 글씨로 변환해서 표시하기
+                            vm.realtimeArrivalList = json.realtimeArrivalList;
+                            vm.filteredPosts = json;
+                        })
+                },
+            },
+            watch: {
+                query: function (val) {
+                    //현재 전체 포스트에서 필터를 해서 post.title.includes(val) 조건에 맞으면 모으기
+                    this.debouncedSearch(val);  //디바운스 적용된 함수
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
