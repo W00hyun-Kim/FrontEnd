@@ -55,6 +55,10 @@
                             vm.realtimeArrivalList = json.realtimeArrivalList;
                             vm.message = '';
                         })
+                        //에러처리하기
+                        .catch(function (error) {
+                            vm.message = '에러! API 요청에 오류가 있습니다.';
+                        })
                 },
             },
             watch: {
