@@ -14,11 +14,22 @@
     <!--컴포넌트 템플릿-->
     <!--양방향 바인딩-->
     <div id="app">
+        <h4>양방향 바인딩</h4>
         <input v-model="message">
         <div>
             {{ message }}
         </div>
     </div>
+
+    <div id="app2">
+        <h4>watch</h4>
+        <input v-model="firstName">
+        <input v-model="lastName">
+        <div>
+            {{ fullName }}
+        </div>
+    </div>
+
 
     <!--화면이 다 구성된 다음에 나와야 하니까 아래쪽에 써주는 게 좋음-->
     <!--템플릿-->
@@ -27,6 +38,24 @@
             el: '#app',
             data: {
                 message: ''
+            }
+        })
+
+        //특정 변수의 값이 바뀔 때 자동으로 바뀌게 된다.
+        let vm = new Vue({
+            el: '#app2',
+            data: {
+                firstName: 'Foo',
+                lastName: 'Bar',
+                fullName: 'Foo Bar'
+            },
+            watch: {
+                firstName: function (val) {
+                    this.fullName = val + ' ' + this.lastName
+                },
+                lastName: function (val) {
+                    this.fullName = this.firstName + ' ' + val
+                }
             }
         })
     </script>
