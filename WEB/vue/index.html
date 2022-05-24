@@ -56,6 +56,19 @@
                 lastName: function (val) {
                     this.fullName = this.firstName + ' ' + val
                 }
+            },
+            //생성자
+            created: function () {
+                console.log('created!');
+            },
+            //methods
+            methods: {
+                greeting: function () {
+                    console.log('Hello');
+                },
+                bye: function () {
+                    console.log('Bye');
+                }
             }
         })
     </script>
