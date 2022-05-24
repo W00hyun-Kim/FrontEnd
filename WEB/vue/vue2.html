@@ -36,6 +36,7 @@
 
                 //디바운스 적용된 검색 함수 정의
                 //5초 안에 들어온 값은 무시한다. debounce에 넣기 위해서 search method 분리
+                //debouncedSearch 라는 함수를 정의해서 넣음.
                 this.debouncedSearch = _.debounce(this.search, 500);
             },
             methods: {
