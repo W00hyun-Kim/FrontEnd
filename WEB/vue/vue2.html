@@ -11,8 +11,10 @@
 
 <body>
     <div id="app">
+        <!--양방향 바인딩-->
+        <input v-model="query" placeholder="검색어">
         <ul>
-            <li v-for="post in posts">
+            <li v-for="post in filteredPosts">
                 {{ post.title }}
             </li>
         </ul>
@@ -22,7 +24,9 @@
         let app = new Vue({
             el: '#app',
             data: {
-                posts: []
+                query: '',
+                posts: [], //전체 데이터
+                filteredPosts: []   //검색 조건에 맞는 데이터만 필터링
             },
             created: function () {
                 //통신
@@ -37,7 +41,14 @@
                         .then(function (json) {
                             //제이슨 데이터를 글씨로 변환해서 표시하기
                             v.posts = json;
+                            v.filteredPosts = json;
                         })
+                }
+            },
+            watch: {
+                query: function (val) {
+                    //현재 전체 포스트에서 필터를 해서 post.title.includes(val) 조건에 맞으면 모으기
+                    this.filteredPosts = this.posts.filter(post => post.title.includes(val))
                 }
             }
         })
