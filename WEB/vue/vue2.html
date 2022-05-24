@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--lodash library 사용하기 위해 cdn import-->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
     <title>Vue prac 2</title>
 </head>
 
@@ -31,6 +33,10 @@
             created: function () {
                 //통신
                 this.getPosts();
+
+                //디바운스 적용된 검색 함수 정의
+                //5초 안에 들어온 값은 무시한다. debounce에 넣기 위해서 search method 분리
+                this.debouncedSearch = _.debounce(this.search, 500);
             },
             methods: {
                 getPosts: function () {
@@ -43,15 +49,19 @@
                             v.posts = json;
                             v.filteredPosts = json;
                         })
+                },
+                search: function (val) {
+                    this.filteredPosts = this.posts.filter(post => post.title.includes(val))
                 }
             },
             watch: {
                 query: function (val) {
                     //현재 전체 포스트에서 필터를 해서 post.title.includes(val) 조건에 맞으면 모으기
-                    this.filteredPosts = this.posts.filter(post => post.title.includes(val))
+                    this.debouncedSearch(val);  //디바운스 적용된 함수
                 }
             }
         })
+
     </script>
 </body>
 
