@@ -35,9 +35,6 @@
                 realtimeArrivalList: [], //전체 데이터
             },
             created: function () {
-                //통신
-                this.getrealtimeArrivalList();
-
                 //디바운스 적용된 검색 함수 정의
                 //1초 안에 들어온 값은 무시한다. debounce에 넣기 위해서 search method 분리
                 //debouncedSearch 라는 함수를 정의해서 넣음.
@@ -63,6 +60,7 @@
             },
             watch: {
                 query: function (val) {
+
                     this.message = '로딩....'
                     //현재 전체 포스트에서 필터를 해서 post.title.includes(val) 조건에 맞으면 모으기
                     this.debouncedSearch(val);  //디바운스 적용된 함수
